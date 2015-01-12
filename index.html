@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Running Calculators</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+    
+    <!-- Pace Calulator CSS-->
+    <link href="css/pacecalc.css" rel="stylesheet">
+    
+    <!-- Bootstrap core JS and jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+	<!-- Pace Calulator JS-->
+    <script src="js/pacecalc.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#" onClick="$('#aboutModal').modal()">About</a></li>
+            <li role="presentation"><a href="http://jonathan-farrell.com/about/">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Calculators</h3>
+      </div>
+      
+      <div class="modal fade" id="aboutModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About</h4>
+              </div>
+              <div class="modal-body">
+                <p>These <strong>Running Calculators</strong> were created by Jonathan Farrell in 2014 - 2015 as a personal resource. The infomation here is as accurate as a calculator can be. Let's not forget that running is not always a calculated sport and that there is no way to calculate a runner's spirit, experience, or pain threshold. These calulators should be used as an informative guide and a suplement to your training.</p>
+                <p>
+                <ul>
+                	<li><strong>Pace Calculator:</strong> Need to know how fast you were running? Simply plug in the distance you ran and the length of time you were running, and we'll give you your pace per mile and MPH.</li>
+                    <li><strong>Split Calculator:</strong> Want to nail perfect splits for a tempo run? Want to know where you should be during a race? Select your distance and enter your goal time and we’ll let you know exactly where you need to be.</li>
+                    <li><strong>Finish Time Calculator:</strong> Want to know how long you’ll be out there running? Enter your target pace per mile and distance and we’ll let you know when you can plan on getting home.</li>
+                    <li><strong>Training Calculator:</strong> Enter the time and distance of a goal race and we’ll tell you the pace recommendations that you should be training at.</li>
+                    <li><strong>Race Time Predictor:</strong> This calculator lets you input an actual race time to see what you should be capable of at another distance. It is adjusted for distance (ie its 10K prediction isn’t just double your 5K time), but there are three caveats:
+<ol>
+<li>It assumes you’ve done appropriate training for the distance. Doing a 22-minute 5K today doesn’t mean you can do a sub-4 marathon tomorrow. Obvious, really.</li>
+<li>It assumes you don’t have a natural significant bias towards either speed or endurance. Some people, no matter how much training they do, will always over-achieve at one end of the scale.</li>
+<li>The calculations become less accurate for times under three and a half minutes and over four hours.</li>
+</ol>
+                </ul>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+      <div class="jumbotron">
+        <h1>Running Calculators</h1>
+        <p class="lead">Run smarter and faster with race predictions, training paces, and accurate splits. Your optimal pace is only a click away. </p>
+       
+      </div>
+
+      <div class="row marketing">
+         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h2>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Pace Calculator
+                </a>
+              </h2>
+              <p><small>Need to know how fast you were running? Simply plug in the distance you ran and the length of time you were running, and we'll give you your pace per mile and MPH.</small></p>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+              	<div class="calculator">
+                	<form method="post" onsubmit="return paceCalculator(this)">
+                    	 <div class="form-group">
+                         	<label for="distance">Distance:</label>
+                             <div class="row">
+                                <div class="col-xs-6"><input class="form-control" id="distance" type="text" name="time" placeholder="00.00" size="4"/></div>
+                                <div class="col-xs-6"><select class="form-control" id="measure"><option selected="selected" value="mile">miles</option><option value="km">km</option></select></div>
+                             </div>
+                        </div>
+  						<div class="form-group">
+                        	<label for="time">Time:</label>
+                            <div class="row">
+                                <div class="col-xs-4"><input class="form-control" id="timeh" type="text" name="timeh" placeholder="HH" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control"id="timem" type="text" name="timem" placeholder="MM" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control" id="times" type="text" name="times" placeholder="SS" size="2" /></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-4">
+                                <input class="btn btn-primary" id="pace-submit" type="submit" />
+                                <input class="btn btn-default" onclick="clearpaceform()" type="reset"/>
+                        
+                        	</div>
+                            <div class="col-md-8">
+                            	<span class="errormessage" id="errormessage"><button type="button" class="btn btn-danger">Error: Please check your input.</button></span>
+                            </div>
+                        
+                       </div> 
+                        
+                        <div id="pacetime" style="display: none;""></div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h2>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Split Calculator
+                </a>
+              </h2>
+              <p><small>Want to nail perfect splits for a tempo run? Want to know where you should be during a race? Select your distance and enter your goal time and we’ll let you know exactly where you need to be.</small></p>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+              	<div class="calculator">
+                	<form method="post" onsubmit="return splitCalculator(this)">
+                    	 <div class="form-group">
+                         	<label for="distance">Distance:</label>
+                             <div class="row">
+                                <div class="col-xs-6"><input class="form-control" id="distance" type="text" name="time" placeholder="00.00" size="4"/></div>
+                                <div class="col-xs-6"><select class="form-control" id="measure"><option selected="selected" value="mile">miles</option><option value="km">km</option></select></div>
+                             </div>
+                        </div>
+  						<div class="form-group">
+                        	<label for="goalTime">Goal Time:</label>
+                            <div class="row">
+                                <div class="col-xs-4"><input class="form-control" id="timeh" type="text" name="timeh" placeholder="HH" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control"id="timem" type="text" name="timem" placeholder="MM" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control" id="times" type="text" name="times" placeholder="SS" size="2" /></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-4">
+                                <input class="btn btn-primary" id="pace-submit" type="submit" />
+                                <input class="btn btn-default" onclick="clearsplitform()" type="reset"/>
+                        
+                        	</div>
+                            <div class="col-md-8">
+                            	<span class="errormessage" id="errormessage2"><button type="button" class="btn btn-danger">Error: Please check your input.</button></span>
+                            </div>
+                        
+                       </div> 
+                        
+                        <div id="splitstable" style="display: none;""></div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h2>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Finish Time Calculator
+                </a>
+              </h2>
+              <p><small>Want to know how long you’ll be out there running? Enter your target pace per mile and distance and we’ll let you know when you can plan on getting home.</small></p>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+              	<div class="calculator">
+                	<form method="post" onsubmit="return finishCalculator(this)">
+                    	 <div class="form-group">
+                         	<label for="distance">Distance:</label>
+                             <div class="row">
+                                <div class="col-xs-6"><input class="form-control" id="distance" type="text" name="time" placeholder="00.00" size="4"/></div>
+                                <div class="col-xs-6"><select class="form-control" id="measure"><option selected="selected" value="mile">miles</option><option value="km">km</option></select></div>
+                             </div>
+                        </div>
+  						<div class="form-group">
+                        	<label for="time">Target Pace:</label>
+                            <div class="row">
+                                <div class="col-xs-6"><input class="form-control"id="timem" type="text" name="timem" placeholder="MM" size="2" /></div>
+                                <div class="col-xs-6"><input class="form-control" id="times" type="text" name="times" placeholder="SS" size="2" /></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-4">
+                                <input class="btn btn-primary" id="pace-submit" type="submit" />
+                                <input class="btn btn-default" onclick="clearfinishform()" type="reset"/>
+                        
+                        	</div>
+                            <div class="col-md-8">
+                            	<span class="errormessage" id="errormessage3"><button type="button" class="btn btn-danger">Error: Please check your input.</button></span>
+                            </div>
+                        
+                       </div> 
+                        
+                        <div id="finishtime" style="display: none;""></div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+              <h2>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Training Calculator
+                </a>
+              </h2>
+              <p><small>Enter the time and distance of a goal race and we’ll tell you the pace recommendations that you should be training at.</small></p>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+              <div class="panel-body">
+                <div class="calculator">
+                	<form method="post" onsubmit="return trainingCalculator(this)">
+                        <div class="form-group">
+    						<label for="distance">Distance:</label>
+                        	<select class="form-control" id="distance"><option selected="selected" value="3.1">5k</option><option value="6.2">10k</option><option value="13.1">Half Marathon</option><option value="26.2">Marathon</option></select>
+                        </div>
+  						<div class="form-group">
+                        	<label for="goalTime">Goal Time:</label>
+                            <div class="row">
+                                <div class="col-xs-4"><input class="form-control" id="timeh" type="text" name="timeh" placeholder="HH" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control"id="timem" type="text" name="timem" placeholder="MM" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control" id="times" type="text" name="times" placeholder="SS" size="2" /></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-4">
+                                <input class="btn btn-primary" id="pace-submit" type="submit" />
+                                <input class="btn btn-default" onclick="cleartrainingform()" type="reset"/>
+                        
+                        	</div>
+                            <div class="col-md-8">
+                            	<span class="errormessage" id="errormessage4"><button type="button" class="btn btn-danger">Error: Please check your input.</button></span>
+                            </div>
+                        
+                       </div> 
+                        
+                        <div id="trainingtimes" style="display: none;""></div>
+                                
+                    </form>
+                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFive">
+              <h2>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Race Time Predictor
+                </a>
+              </h2>
+              <p><small>This calculator lets you input an actual race time to see what you should be capable of at another distance. It is adjusted for distance (ie its 10K prediction isn’t just double your 5K time), but there are three caveats:
+              <ul>
+              	<li>It assumes you’ve done appropriate training for the distance. Doing a 22-minute 5K today doesn’t mean you can do a sub-4 marathon tomorrow. Obvious, really.</li>
+                <li>It assumes you don’t have a natural significant bias towards either speed or endurance. Some people, no matter how much training they do, will always over-achieve at one end of the scale.</li>
+                <li>The calculations become less accurate for times under three and a half minutes and over four hours.</li>
+              </ul>
+              </small></p>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+              <div class="panel-body">
+              	<div class="calculator">
+                	<form method="post" onsubmit="return racePredictor(this)">
+                    	 <div class="form-group">
+                         	<label for="distance">Distance:</label>
+                             <div class="row">
+                                <div class="col-xs-6"><input class="form-control" id="distance" type="text" name="time" placeholder="00.00" size="4"/></div>
+                                <div class="col-xs-6"><select class="form-control" id="measure"><option selected="selected" value="mile">miles</option><option value="km">km</option></select></div>
+                             </div>
+                        </div>
+  						<div class="form-group">
+                        	<label for="finishingTime">Finishing Time:</label>
+                            <div class="row">
+                                <div class="col-xs-4"><input class="form-control" id="timeh" type="text" name="timeh" placeholder="HH" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control"id="timem" type="text" name="timem" placeholder="MM" size="2" /></div>
+                                <div class="col-xs-4"><input class="form-control" id="times" type="text" name="times" placeholder="SS" size="2" /></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-4">
+                                <input class="btn btn-primary" id="pace-submit" type="submit" />
+                                <input class="btn btn-default" onclick="clearpredictorform()" type="reset"/>
+                        
+                        	</div>
+                            <div class="col-md-8">
+                            	<span class="errormessage" id="errormessage5"><button type="button" class="btn btn-danger">Error: Please check your input.</button></span>
+                            </div>
+                        
+                       </div> 
+                        
+                        <div id="racetimes" style="display: none;""></div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy;2015 Jonathan Farrell - <a href="http://www.jonathan-farrell.com">jonathan-farrell.com</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
