@@ -145,9 +145,10 @@ function splitCalculator(form){
 					i++;
 			}
 			
+			
 			splits = splits + "</table>";
 			
-			$("#splitstable").html("<div class='splitpace'><p style='font-weight:bold;'>Your pace will be: "+convertTime(pace)+" ("+calculateMPH(pace)+"mph)</p></div>"+splits);
+			$("#splitstable").html("<div class='splitpace'><p style='font-weight:bold;'>Your pace will be: "+convertTime(pace)+" ("+calculateMPH(pace)+"mph)</p><p>Your .25 mile splits will be: "+convertTime((pace/4))+"</p></div>"+splits);
 			
 			$("#splitstable").slideDown();
 		}
