@@ -2,12 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta property="og:image" content="http://jonathan-farrell.com/running-calculators/img/running-calculator.png" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="icon" href="/favicon.ico">
+    <link href="http://www.jonathan-farrell.com/running-calculators/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
 
     <title>Running Calculators</title>
 
@@ -56,6 +59,7 @@
                 <h4 class="modal-title">About</h4>
               </div>
               <div class="modal-body">
+              <div id="aboutImg"><img src="img/calculator.png"/></div>
                 <p>These <strong>Running Calculators</strong> were created by Jonathan Farrell in 2014 - 2015 as a personal resource. The infomation here is as accurate as a calculator can be. Let's not forget that running is not always a calculated sport and that there is no way to calculate a runner's spirit, experience, or pain threshold. These calulators should be used as an informative guide and a suplement to your training.</p>
                 <p>
                 <ul>
@@ -328,6 +332,7 @@
       </footer>
 
     </div> <!-- /container -->
-
+	<script src="js/jquery-addToHome.js"></script>
+    <script>$(window).showAddToHome();</script>
   </body>
 </html>
